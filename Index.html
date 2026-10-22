@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -15,132 +16,323 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f2f2f2;
+            background: #080b12;
+            color: white;
         }
 
         /* CABEÇALHO */
+
         header {
-            background-color: darkgrey;
-            color: white;
+            max-width: 1000px;
+            margin: 24px auto 0;
+            padding: 28px 20px;
             text-align: center;
-            max-width: 800px;
-            margin: 20px auto 0;
-            border: 5px solid black;
-            padding: 16px;
+            background: #111722;
+            border: 2px solid #00e5ff;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 0 18px rgba(0, 229, 255, 0.2);
         }
 
         header h1 {
-            margin-top: 0;
+            margin: 0 0 12px;
+            color: #00e5ff;
+            font-size: 34px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 0;
+            color: #c7d2df;
+            line-height: 1.6;
         }
 
         /* CONTEÚDO PRINCIPAL */
+
         main {
-            background-color: darkgrey;
-            color: white;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto 24px;
+            padding: 24px;
+            background: #111722;
+            border: 1px solid #263342;
+            border-top: none;
         }
 
-        /* POST */
+        .introducao {
+            margin: 0 0 28px;
+            padding: 16px;
+            background: #0b111b;
+            border-left: 4px solid #00e5ff;
+            line-height: 1.7;
+            color: #d5e0ec;
+        }
+
+        /* POSTS */
+
         .post {
             display: flex;
-            gap: 20px;
             align-items: flex-start;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #555;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #344151;
         }
 
-        /* IMAGEM */
+        .post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* IMAGENS */
+
         .tech-canvas-container {
-            width: 50%;
-            border: 3px solid #00e5ff;
-            border-radius: 8px;
+            position: relative;
+            flex: 1;
+            min-width: 0;
             overflow: hidden;
-            box-shadow:
-                0 0 10px #00e5ff,
-                0 0 25px rgba(0, 229, 255, 0.5);
-            background-color: #111;
+            border: 2px solid #00e5ff;
+            border-radius: 10px;
+            background: #080b12;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
         }
 
-        /* CANVAS */
-        .tech-canvas-container canvas {
+        .imagem-area {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagem-yuri {
             display: block;
             width: 100%;
-            height: auto;
+            height: 300px;
+            object-fit: cover;
+            object-position: center top;
+            filter: saturate(0.85) contrast(1.08);
+            transition: transform 0.5s;
+        }
+
+        .tech-canvas-container:hover .imagem-yuri {
+            transform: scale(1.05);
+        }
+
+        /* EFEITO DE VARREDURA */
+
+        .efeito-neon {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 229, 255, 0.04) 45%,
+                rgba(0, 229, 255, 0.3) 50%,
+                rgba(0, 229, 255, 0.04) 55%,
+                transparent 100%
+            );
+            background-size: 100% 200%;
+            animation: varredura 4s linear infinite;
+        }
+
+        @keyframes varredura {
+            from {
+                background-position: 0 -100%;
+            }
+
+            to {
+                background-position: 0 100%;
+            }
+        }
+
+        /* PARTÍCULAS */
+
+        .particulas {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
             pointer-events: none;
         }
 
+        .particula {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00e5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00e5ff;
+            animation: flutuar 4s linear infinite;
+        }
+
+        .particula:nth-child(1) {
+            left: 10%;
+            top: 20%;
+        }
+
+        .particula:nth-child(2) {
+            left: 30%;
+            top: 70%;
+            animation-delay: 1s;
+        }
+
+        .particula:nth-child(3) {
+            left: 50%;
+            top: 35%;
+            animation-delay: 2s;
+        }
+
+        .particula:nth-child(4) {
+            left: 70%;
+            top: 80%;
+            animation-delay: 0.5s;
+        }
+
+        .particula:nth-child(5) {
+            left: 85%;
+            top: 25%;
+            animation-delay: 1.5s;
+        }
+
+        .particula:nth-child(6) {
+            left: 60%;
+            top: 50%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50px, 60px);
+                opacity: 0;
+            }
+        }
+
         /* BOTÕES */
+
         .buttons-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 10px;
-            padding: 5px 0;
-            background-color: #111;
+            gap: 12px;
+            padding: 12px;
+            background: #080b12;
         }
 
         .like-button {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 20px;
-            background-color: #222;
+            padding: 9px 18px;
+            border: 1px solid #344151;
+            border-radius: 22px;
+            background: #151e2b;
             color: white;
-            font-size: 18px;
+            font-size: 17px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.25s;
         }
 
         .like-button:hover {
-            background-color: #00e5ff;
-            color: black;
-            transform: scale(1.05);
+            background: #00e5ff;
+            color: #080b12;
+            border-color: #00e5ff;
+            transform: translateY(-2px);
         }
 
         .like-button:active {
             transform: scale(0.95);
         }
 
-        /* ARTIGO */
+        /* TEXTOS */
+
         article {
-            width: 50%;
-            text-align: left;
+            flex: 1;
+            min-width: 0;
         }
 
-        h2 {
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 10px;
+        article h2 {
+            margin: 0 0 14px;
+            color: #00e5ff;
+            font-size: 23px;
+            line-height: 1.35;
         }
 
         .artigo-autor {
+            color: #a7bacb;
+            font-size: 14px;
             font-weight: bold;
+        }
+
+        article p {
+            color: #d4dce7;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .categoria {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border: 1px solid #00e5ff;
+            border-radius: 20px;
             color: #00e5ff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        p {
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
+        /* RODAPÉ */
 
-        /* SEGUNDO POST */
-        .segundo-post {
-            width: 100%;
-            text-align: left;
+        footer {
+            max-width: 1000px;
+            margin: 0 auto 24px;
+            padding: 20px;
+            text-align: center;
+            color: #91a0b2;
+            font-size: 13px;
+            border-top: 1px solid #263342;
         }
 
         /* RESPONSIVIDADE */
-        @media (max-width: 650px) {
+
+        @media (max-width: 700px) {
+            header {
+                margin: 12px 10px 0;
+                border-radius: 10px 10px 0 0;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            main {
+                margin: 0 10px;
+                padding: 16px;
+            }
 
             .post {
                 flex-direction: column;
+                gap: 18px;
             }
 
             .tech-canvas-container,
             article {
                 width: 100%;
+                flex: auto;
+            }
+
+            .imagem-yuri {
+                height: 320px;
+            }
+
+            article h2 {
+                font-size: 21px;
             }
         }
     </style>
@@ -149,399 +341,313 @@
 <body>
 
     <!-- CABEÇALHO -->
-    <header>
 
+    <header>
         <h1>💻 Meu Blog Tech</h1>
 
         <p>
-            Novidades, dicas e curiosidades sobre tecnologia e programação.
+            Tecnologia, inteligência artificial, programação
+            e inovação no universo digital.
         </p>
-
     </header>
 
-
     <!-- CONTEÚDO -->
+
     <main>
 
-        <!-- PRIMEIRO POST -->
+        <div class="introducao">
+            <strong>Bem-vindo ao Meu Blog Tech!</strong>
+            <br>
+            Aqui você encontra informações sobre inteligência
+            artificial, hardware, programação e as novidades
+            que estão transformando o mundo digital.
+        </div>
+
+        <!-- POST 1: INTELIGÊNCIA ARTIFICIAL -->
+
         <div class="post">
 
-            <!-- IMAGEM / CANVAS -->
             <div class="tech-canvas-container">
 
-                <canvas id="techCanvas"></canvas>
+                <div class="imagem-area">
 
-                <!-- BOTÕES -->
+                    <img
+                        class="imagem-yuri"
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri_Alberto_Corinthians.jpg"
+                        alt="Yuri Alberto com a camisa do Corinthians"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri-Alberto-Corinthians-2024.jpg';"
+                    >
+
+                    <div class="efeito-neon"></div>
+
+                    <div class="particulas">
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                    </div>
+
+                </div>
+
                 <div class="buttons-container">
 
                     <button
                         class="like-button"
                         type="button"
-                        onclick="adicionarCoracao()"
+                        onclick="curtir('ia', 'coracao')"
                     >
-                        ❤️ <span id="likeCount">0</span>
+                        ❤️ <span id="ia-coracao">0</span>
                     </button>
 
                     <button
                         class="like-button"
                         type="button"
-                        onclick="adicionarJoinha()"
+                        onclick="curtir('ia', 'joinha')"
                     >
-                        👍 <span id="likeCount2">0</span>
+                        👍 <span id="ia-joinha">0</span>
                     </button>
 
                 </div>
 
             </div>
 
-
-            <!-- ARTIGO -->
             <article>
 
-                <h2>Meu Primeiro Post</h2>
+                <span class="categoria">Inteligência Artificial</span>
+
+                <h2>
+                    Inteligência Artificial: o Futuro da Tecnologia
+                </h2>
 
                 <p class="artigo-autor">
                     Por: Luiz Felipe Cancian
                 </p>
 
                 <p>
-                    Seja bem-vindo ao Meu Blog Tech! Este espaço foi criado
-                    para compartilhar conhecimentos sobre programação,
-                    desenvolvimento web, inteligência artificial, hardware
-                    e as principais novidades do mundo da tecnologia.
+                    A Inteligência Artificial está transformando
+                    o mundo digital. Essa tecnologia permite que
+                    sistemas analisem informações, reconheçam
+                    padrões e auxiliem na realização de tarefas.
                 </p>
 
                 <p>
-                    Aqui você encontrará dicas, tutoriais e curiosidades
-                    para quem deseja aprender mais sobre programação e
-                    acompanhar as tendências do universo da tecnologia.
+                    Ferramentas inteligentes podem ajudar na
+                    programação, na produção de conteúdo e na
+                    resolução de problemas. Entretanto, é importante
+                    verificar as informações geradas e utilizar
+                    essas ferramentas com responsabilidade.
                 </p>
 
             </article>
 
         </div>
 
+        <!-- POST 2: HARDWARE -->
 
-        <!-- SEGUNDO POST -->
-        <article class="segundo-post">
+        <div class="post">
 
-            <h2>Meu Segundo Post</h2>
+            <div class="tech-canvas-container">
 
-            <p class="artigo-autor">
-                Por: Luiz Felipe Cancian
-            </p>
+                <div class="imagem-area">
 
-            <p>
-               Seja bem-vindo ao Meu Blog Tech! Este espaço foi criado
-                    para compartilhar conhecimentos sobre programação,
-                    desenvolvimento web, inteligência artificial, hardware
-                    e as principais novidades do mundo da tecnologia.
-            </p>
+                    <img
+                        class="imagem-yuri"
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri-Alberto-Corinthians-2024.jpg"
+                        alt="Yuri Alberto pelo Corinthians em uma imagem de tema tecnológico"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri_Alberto_Corinthians.jpg';"
+                    >
 
-            <p>
-                 Aqui você encontrará dicas, tutoriais e curiosidades
-                    para quem deseja aprender mais sobre programação e
-                    acompanhar as tendências do universo da tecnologia.
-            </p>
+                    <div class="efeito-neon"></div>
 
-        </article>
+                    <div class="particulas">
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                    </div>
+
+                </div>
+
+                <div class="buttons-container">
+
+                    <button
+                        class="like-button"
+                        type="button"
+                        onclick="curtir('hardware', 'coracao')"
+                    >
+                        ❤️ <span id="hardware-coracao">0</span>
+                    </button>
+
+                    <button
+                        class="like-button"
+                        type="button"
+                        onclick="curtir('hardware', 'joinha')"
+                    >
+                        👍 <span id="hardware-joinha">0</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <article>
+
+                <span class="categoria">Hardware</span>
+
+                <h2>
+                    Hardware: as Peças que Movem o Computador
+                </h2>
+
+                <p class="artigo-autor">
+                    Por: Luiz Felipe Cancian
+                </p>
+
+                <p>
+                    O hardware é formado pelos componentes físicos
+                    de um computador. O processador executa instruções,
+                    a memória RAM auxilia nas tarefas em andamento
+                    e o armazenamento guarda arquivos e programas.
+                </p>
+
+                <p>
+                    A placa de vídeo é importante para processar
+                    gráficos, jogos e aplicações visuais. Conhecer
+                    esses componentes ajuda a escolher peças
+                    compatíveis e montar um computador adequado
+                    para cada necessidade.
+                </p>
+
+            </article>
+
+        </div>
+
+        <!-- POST 3: PROGRAMAÇÃO -->
+
+        <div class="post">
+
+            <div class="tech-canvas-container">
+
+                <div class="imagem-area">
+
+                    <img
+                        class="imagem-yuri"
+                        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri_Alberto_-_Sulamericana_CUP_2023_Semifinal_-_Corinthians_x_Fortaleza-CE_(53554974694)_(cropped).jpg"
+                        alt="Yuri Alberto pelo Corinthians em fotografia esportiva"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Yuri-Alberto-Corinthians-2024.jpg';"
+                    >
+
+                    <div class="efeito-neon"></div>
+
+                    <div class="particulas">
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                        <span class="particula"></span>
+                    </div>
+
+                </div>
+
+                <div class="buttons-container">
+
+                    <button
+                        class="like-button"
+                        type="button"
+                        onclick="curtir('programacao', 'coracao')"
+                    >
+                        ❤️ <span id="programacao-coracao">0</span>
+                    </button>
+
+                    <button
+                        class="like-button"
+                        type="button"
+                        onclick="curtir('programacao', 'joinha')"
+                    >
+                        👍 <span id="programacao-joinha">0</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <article>
+
+                <span class="categoria">Programação</span>
+
+                <h2>
+                    Programação Web: do Código ao Site
+                </h2>
+
+                <p class="artigo-autor">
+                    Por: Luiz Felipe Cancian
+                </p>
+
+                <p>
+                    A programação web permite desenvolver páginas,
+                    sistemas e experiências interativas. O HTML
+                    organiza o conteúdo, o CSS define a aparência
+                    e o JavaScript adiciona funcionalidades.
+                </p>
+
+                <p>
+                    Com essas tecnologias, é possível criar blogs,
+                    portfólios, lojas virtuais e aplicativos.
+                    Aprender a programar estimula a criatividade,
+                    o raciocínio lógico e a capacidade de resolver
+                    problemas.
+                </p>
+
+            </article>
+
+        </div>
 
     </main>
 
+    <!-- RODAPÉ -->
+
+    <footer>
+        © 2026 Meu Blog Tech | Tecnologia, conhecimento e inovação.
+    </footer>
 
     <script>
+        // CONTADORES DOS POSTS
 
-        /* =========================
-           CONTADORES DOS BOTÕES
-        ========================= */
+        const contadores = {
+            ia: {
+                coracao: 0,
+                joinha: 0
+            },
 
-        let contadorCoracao = 0;
-        let contadorJoinha = 0;
+            hardware: {
+                coracao: 0,
+                joinha: 0
+            },
 
-
-        /* CORAÇÃO */
-
-        function adicionarCoracao() {
-
-            contadorCoracao++;
-
-            document.getElementById("likeCount").textContent =
-                contadorCoracao;
-
-        }
-
-
-        /* JOINHA */
-
-        function adicionarJoinha() {
-
-            contadorJoinha++;
-
-            document.getElementById("likeCount2").textContent =
-                contadorJoinha;
-
-        }
-
-
-        /* =========================
-           CANVAS
-        ========================= */
-
-        const canvas =
-            document.getElementById("techCanvas");
-
-        const ctx =
-            canvas.getContext("2d");
-
-
-        /* =========================
-           IMAGEM
-        ========================= */
-
-        const img = new Image();
-
-        img.crossOrigin = "anonymous";
-
-        img.src =
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200";
-
-
-        /* =========================
-           PARTÍCULAS
-        ========================= */
-
-        const particles = [];
-
-        const numParticles = 35;
-
-
-        class Particle {
-
-            constructor(w, h) {
-
-                this.reset(w, h);
-
+            programacao: {
+                coracao: 0,
+                joinha: 0
             }
-
-
-            reset(w, h) {
-
-                this.x =
-                    Math.random() * w;
-
-                this.y =
-                    Math.random() * h;
-
-                this.speed =
-                    1 + Math.random() * 2.5;
-
-                this.radius =
-                    1.5 + Math.random() * 2;
-
-                this.alpha =
-                    0.3 + Math.random() * 0.7;
-
-                this.angle =
-                    Math.random() < 0.5
-                        ? 0.3
-                        : -0.3;
-
-            }
-
-
-            update(w, h) {
-
-                this.x +=
-                    Math.cos(this.angle) *
-                    this.speed;
-
-                this.y +=
-                    Math.sin(this.angle) *
-                    this.speed;
-
-
-                if (
-                    this.x > w ||
-                    this.x < 0 ||
-                    this.y > h ||
-                    this.y < 0
-                ) {
-
-                    this.reset(w, h);
-
-                }
-
-            }
-
-
-            draw(ctx) {
-
-                ctx.beginPath();
-
-                ctx.arc(
-                    this.x,
-                    this.y,
-                    this.radius,
-                    0,
-                    Math.PI * 2
-                );
-
-                ctx.fillStyle =
-                    `rgba(
-                        0,
-                        229,
-                        255,
-                        ${this.alpha}
-                    )`;
-
-                ctx.shadowColor =
-                    "#00e5ff";
-
-                ctx.shadowBlur = 10;
-
-                ctx.fill();
-
-                ctx.shadowBlur = 0;
-
-            }
-
-        }
-
-
-        /* =========================
-           LINHA DE VARREDURA
-        ========================= */
-
-        let scanlineY = 0;
-
-
-        /* =========================
-           IMAGEM CARREGADA
-        ========================= */
-
-        img.onload = function () {
-
-            canvas.width =
-                img.width;
-
-            canvas.height =
-                img.height;
-
-
-            for (
-                let i = 0;
-                i < numParticles;
-                i++
-            ) {
-
-                particles.push(
-                    new Particle(
-                        canvas.width,
-                        canvas.height
-                    )
-                );
-
-            }
-
-
-            animate();
-
         };
 
+        function curtir(post, tipo) {
+            contadores[post][tipo]++;
 
-        /* =========================
-           ANIMAÇÃO
-        ========================= */
-
-        function animate() {
-
-            ctx.drawImage(
-                img,
-                0,
-                0,
-                canvas.width,
-                canvas.height
+            const elemento = document.getElementById(
+                `${post}-${tipo}`
             );
 
-
-            /* SCANLINE */
-
-            scanlineY += 3;
-
-
-            if (
-                scanlineY >
-                canvas.height
-            ) {
-
-                scanlineY = 0;
-
-            }
-
-
-            const gradient =
-                ctx.createLinearGradient(
-                    0,
-                    scanlineY - 40,
-                    0,
-                    scanlineY + 40
-                );
-
-
-            gradient.addColorStop(
-                0,
-                "rgba(0, 229, 255, 0)"
-            );
-
-
-            gradient.addColorStop(
-                0.5,
-                "rgba(0, 229, 255, 0.25)"
-            );
-
-
-            gradient.addColorStop(
-                1,
-                "rgba(0, 229, 255, 0)"
-            );
-
-
-            ctx.fillStyle =
-                gradient;
-
-
-            ctx.fillRect(
-                0,
-                scanlineY - 40,
-                canvas.width,
-                80
-            );
-
-
-            /* PARTÍCULAS */
-
-            particles.forEach(
-                particle => {
-
-                    particle.update(
-                        canvas.width,
-                        canvas.height
-                    );
-
-                    particle.draw(ctx);
-
-                }
-            );
-
-
-            requestAnimationFrame(
-                animate
-            );
-
+            elemento.textContent = contadores[post][tipo];
         }
-
     </script>
 
 </body>
-
 </html>
+```
